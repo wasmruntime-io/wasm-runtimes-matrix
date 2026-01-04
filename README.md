@@ -1,59 +1,67 @@
-# 🕸️ WebAssembly Runtime Comparison (2026 Ready)
+# Awesome WebAssembly Runtimes
 
-> **The most up-to-date comparison matrix of all WebAssembly runtimes.**  
-> Don't just list them, **compare** them with real data.
+[![English](https://img.shields.io/badge/Language-English-blue)](#) [![Chinese](https://img.shields.io/badge/Language-中文-gray)](README.zh.md)
 
-## 🚀 [**View the Interactive 2026 Benchmark Charts**](https://wasmruntime.com) 🚀
-*Everything you see here, but interactive, sortable, and updated daily.*
+> **Note**: This repository maintains a static feature matrix. For real-time performance benchmarks (Cold Start, Memory, Throughput) and interactive filtering, please visit the **[WasmRuntime.com Dashboard](https://wasmruntime.com)**.
 
 ---
 
-Build Status: [![Matrix Check](https://img.shields.io/badge/2026-Up%20to%20Date-brightgreen)](https://github.com/wasmruntime-io/wasm-runtime-comparison) 
-License: [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+## Runtime Matrix (Top 5)
 
-## ⚡ The Matrix
+A curated list of the most popular WebAssembly runtimes.
 
-Which WebAssembly runtime should you use? This table compares the most popular runtimes based on language, execution model, standards support, and primary use cases.
+| Runtime | Language | License | Key Features | Best For... |
+| :--- | :---: | :---: | :--- | :--- |
+| **[Wasmtime](https://wasmtime.dev/)** | Rust | Apache-2.0 | • WASI Preview 2<br>• Component Model | **Standard Compliance**<br>Security, Server-side |
+| **[Wasmer](https://wasmer.io/)** | Rust | MIT | • WASIX Standard<br>• Pluggable Engines | **Universal Usage**<br>Running "Anything" anywhere |
+| **[WasmEdge](https://wasmedge.org/)** | C++ | Apache-2.0 | • AI Plugins (TF/PyTorch)<br>• Kubernetes Compatible | **AI Inference & Edge**<br>High-perf Edge Computing |
+| **[wazero](https://wazero.io/)** | Go | Apache-2.0 | • Zero CGO<br>• Pure Go Implementation | **Go Integration**<br>Cross-platform Go Apps |
+| **[WAMR](https://github.com/bytecodealliance/wasm-micro-runtime)** | C | Apache-2.0 | • Intel SGX Support<br>• Multiple Execution Modes | **IoT & Embedded**<br>Minimum footprint |
 
-| Runtime | Written In | Execution Mode | WASI Support | Component Model | Key Focus / "Killer Feature" | License |
-| :--- | :---: | :---: | :---: | :---: | :--- | :---: |
-| **[Wasmtime](https://wasmtime.dev/)** | Rust | JIT / AOT | ✅ (Preview 2) | ✅ | **The Standard.** Built by Bytecode Alliance. Secure, fast, reference implementation. | Apache-2.0 |
-| **[WasmEdge](https://wasmedge.org/)** | C++ | AOT / JIT / Interpreter | ✅ | ✅ | **Cloud Native & AI.** Optimized for Kubernetes and AI inference extensions. | Apache-2.0 |
-| **[Wasmer](https://wasmer.io/)** | Rust | JIT / AOT / Static | ✅ | ✅ | **The Ecosystem.** Has its own package manager (WAPM) and "run anywhere" philosophy. | MIT |
-| **[WAMR](https://github.com/bytecodealliance/wasm-micro-runtime)** | C | Interpreter / AOT / JIT | ✅ | 🚧 | **IoT & Embedded.** Small footprint (Intel), meant for resource-constrained devices. | Apache-2.0 |
-| **[Wazero](https://wazero.io/)** | Go | JIT / Interpreter | ✅ | 🚧 | **Zero Dependencies.** Pure Go runtime, no CGO required. Perfect for Go integration. | Apache-2.0 |
-| **[Wasm3](https://github.com/wasm3/wasm3)** | C | Interpreter | ⚠️ (Basic) | ❌ | **Portability.** The fastest WebAssembly *interpreter*. Runs on almost any CPU/MCU. | MIT |
-| **[V8](https://v8.dev/)** | C++ | JIT (TurboFan) | ❌ (Node/Browser APIs) | ❌ | **Browser/JS.** The engine powering Chrome and Node.js. | BSD |
-| **[SpiderMonkey](https://spidermonkey.dev/)** | C++ | JIT | ❌ | 🚧 | **Browser (Firefox).** First to support many Wasm proposals. | MPL-2.0 |
-| **[Second State (SSVM)](https://github.com/second-state/SSVM)** | C++ | AOT | ✅ | ❌ | *Now merged into WasmEdge.* | - |
-
-> **Legend:**
-> * ✅ = Full / Stable Support
-> * 🚧 = In Progress / Experimental
-> * ⚠️ = Partial / Limited Support
-> * ❌ = Not Supported / Not Applicable
-> * **JIT**: Just-In-Time Compilation | **AOT**: Ahead-Of-Time Compilation
-
-## 🔍 Detailed Comparisons
-
-### Performance Tier
-* **Tier 1 (Near Native):** Wasmtime, Wasmer, WasmEdge (AOT mode)
-* **Tier 2 (Balanced):** V8, SpiderMonkey
-* **Tier 3 (Start-up focused / Low resource):** Wasm3, WAMR (Interpreter mode)
-
-### Use Case Recommendations
-* **Running inside a Go binary?** 👉 Choose **Wazero**.
-* **Need standard compliance & security?** 👉 Choose **Wasmtime**.
-* **Doing AI inference or running on K8s?** 👉 Choose **WasmEdge**.
-* **Running on a microcontroller (ESP32, etc.)?** 👉 Choose **WAMR** or **Wasm3**.
-
-## 🤝 Contribution
-
-Found a mistake or want to add a new runtime?
-1. Fork this repository.
-2. Edit `README.md`.
-3. Update the Matrix row.
-4. Submit a Pull Request.
+[View full 15+ runtime leaderboard with performance data →](https://wasmruntime.com)
 
 ---
-*Maintainer note: This matrix is manually curated. Please provide sources for feature support claims.*
+
+## Quick Selection Guide
+
+### Go Developers
+*   **Recommendation**: **wazero**
+*   **Why**: It is the only mature runtime that requires **Zero CGO**, solving cross-compilation pain points. [Compare compilation speeds here](https://wasmruntime.com).
+
+### Python Developers
+*   **Recommendation**: **Wasmer** (General) or **WasmEdge** (AI)
+*   **Why**: Wasmer has the easiest pip install; WasmEdge supports native AI hardware acceleration for [lower inference latency](https://wasmruntime.com).
+
+### Rust Developers
+*   **Recommendation**: **Wasmtime**
+*   **Why**: The gold standard for WASI Preview 2 and Component Model support.
+
+---
+
+## Top Use Cases
+
+### Serverless
+WebAssembly cold starts are significantly faster than Docker containers.
+*   **Recommendation**: **Spin (by Fermyon)**
+*   **Feature**: Sub-millisecond cold starts. [See benchmarks vs AWS Lambda](https://wasmruntime.com).
+
+### AI Inference
+Run LLMs and ML models with portable binaries.
+*   **Recommendation**: **WasmEdge**
+*   **Feature**: Direct GPU/NPU access via plugins.
+
+---
+
+## Comparison Summary
+
+Based on [WasmRuntime.com benchmarks](https://wasmruntime.com):
+*   **Cold Start**: Wasm is 10-50x faster than Docker.
+*   **Density**: Wasm allows 50x more instances per server.
+*   **Security**: Process-level sandboxing (Capability-based).
+
+---
+
+## Contribution
+
+Maintained by the **WasmRuntime.com** team.
+Found a mistake? Submit a PR or check the site for the latest data.
